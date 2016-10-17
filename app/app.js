@@ -213,4 +213,3 @@ portfolioApp.controller('WorkController', function ProjectsController($scope) {
         }
     ]
 });
-
