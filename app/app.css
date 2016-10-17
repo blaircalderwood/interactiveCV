@@ -1,0 +1,163 @@
+/* app css stylesheet */
+
+.menu {
+    list-style: none;
+    border-bottom: 0.1em solid black;
+    margin-bottom: 2em;
+    padding: 0 0 0.5em;
+}
+
+.menu:before {
+    content: "[";
+}
+
+.menu:after {
+    content: "]";
+}
+
+.menu > li {
+    display: inline;
+}
+
+.menu > li + li:before {
+    content: "|";
+    padding-right: 0.3em;
+}
+
+html, body{
+    min-height: 100%;
+}
+
+body {
+    background-color: cadetblue;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    position: relative;
+
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.5); /*dim the background*/
+}
+
+.info-row{
+    padding-bottom: 2%;
+}
+
+.align-right{
+    text-align: right;
+}
+
+.align-center{
+    text-align: center;
+}
+
+.justify{
+    text-align: justify;
+}
+
+hr {
+    border-color: gold;
+    width: 100%;
+}
+
+.row {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.heading {
+    font-family: 'Oswald', sans-serif;
+}
+
+.project-thumb {
+    background-color: rgba(0, 0, 0, 0.1);
+    margin: 1%;
+    padding-top: 1%;
+
+}
+
+.anchor-tag {
+    text-decoration: none;
+}
+
+.anchor-tag:hover {
+    text-decoration: none;
+}
+
+.project-thumb.ng-enter,
+.project-thumb.ng-leave,
+.project-thumb.ng-move {
+    transition: 0.5s linear all;
+}
+
+.project-thumb.ng-enter,
+.project-thumb.ng-move {
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+}
+
+.project-thumb.ng-enter.ng-enter-active,
+.project-thumb.ng-move.ng-move-active {
+    height: 120px;
+    opacity: 1;
+}
+
+.project-thumb.ng-leave {
+    opacity: 1;
+    overflow: hidden;
+}
+
+.project-thumb.ng-leave.ng-leave-active {
+    height: 0;
+    opacity: 0;
+    padding-bottom: 0;
+    padding-top: 0;
+}
+
+.view-container {
+    position: relative;
+}
+
+.view-frame.ng-enter,
+.view-frame.ng-leave {
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.view-frame.ng-enter {
+    animation: 1s fade-in;
+    z-index: 100;
+}
+
+.view-frame.ng-leave {
+    animation: 1s fade-out;
+    z-index: 99;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}

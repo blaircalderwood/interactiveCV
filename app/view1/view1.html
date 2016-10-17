@@ -1,0 +1,106 @@
+<div class="row heading">
+
+    <div class="col-md-6 align-center">
+        <h2>Blair Calderwood</h2>
+    </div>
+
+    <div class="col-md-6 align-center">
+        <h2>Full Stack Web Developer</h2>
+    </div>
+
+</div>
+
+<hr class="info-row">
+
+<div class="row info-row">
+
+    <div class="col-md-6" ng-controller="EducationController">
+
+        <h3>Education</h3>
+
+        <div class="row info-row" ng-repeat="education in educations">
+            <h4><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> {{education.establishment}}</h4>
+            <p><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> {{education.startDate}} -
+                {{education.endDate}}</p>
+            <p><span class="glyphicon glyphicon-education" aria-hidden="true"></span> {{education.degree}}</p>
+            <p><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span> {{education.description}}</p>
+        </div>
+
+    </div>
+
+    <div class="col-md-6" ng-controller="WorkController">
+
+        <h3>Work Experience</h3>
+
+        <div class="row info-row" ng-repeat="work in workExperience">
+            <h4><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> {{work.establishment}}</h4>
+            <p><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> {{work.startDate}} -
+                {{work.endDate}}</p>
+            <p><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> {{work.degree}}</p>
+            <p class="justify"><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span>
+                {{work.description}}</p>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="row info-row">
+    <h3>Languages</h3>
+</div>
+
+<div class="row info-row">
+    <h3>Skills</h3>
+</div>
+
+<div class="row">
+    <h3>Projects</h3>
+    <div style="text-align: right">
+        <label for="searchInput">Search projects or technologies: </label>
+        <input id="searchInput" type="search">
+    </div>
+</div>
+
+<div ng-controller="ProjectsController">
+
+    <div class="row info-row">
+
+        <div class="col-md-2 col-xs-3 project-thumb hvr-grow-shadow" ng-repeat="project in projects">
+
+            <div class="thumbnail" ng-click="overlayShow = true">
+                <a class="thumb">
+                    <img ng-src="{{project.imageURL}}" alt="{{project.name}}" height="100%" width="100%">
+                </a>
+            </div>
+
+            <p><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span> {{project.name}}</p>
+            <p><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> {{project.company}}</p>
+
+            <p>
+                <a class="anchor-tag" ng-repeat="tag in project.tags"><span
+                        class="label label-default">{{tag}}</span> </a>
+            </p>
+        </div>
+
+    </div>
+
+    <div class="overlay" ng-show="overlayShow">
+
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-3">
+                <div class="col-md-4">
+                    Project Name
+                </div>
+
+                <div class="col-md-4">
+                    Project Description
+                </div>
+
+                <div class="col-md-4">
+                    Project Team Size
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
