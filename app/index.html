@@ -50,7 +50,174 @@
 <![endif]-->
 
 <div class="view-container">
-    <div ng-view class="view-frame"></div>
+    <script type="text/javascript">
+
+    $(document).ready(function () {
+
+        var animationDelay = 2500;
+
+        animateHeadline($('.headline'));
+
+        function animateHeadline($headlines) {
+
+            $headlines.each(function () {
+                var headline = $(this);
+
+                //trigger animation
+                setTimeout(function () {
+                    //hideWord(headline.find('.is-visible'))
+                }, animationDelay);
+                //other checks here ...
+            });
+        }
+
+        function hideWord($word) {
+            var nextWord = takeNext($word);
+            switchWord($word, nextWord);
+            setTimeout(function () {
+                hideWord(nextWord)
+            }, animationDelay);
+        }
+
+        function takeNext($word) {
+            return (!$word.is(':last-child')) ? $word.next() : $word.parent().children().eq(0);
+        }
+
+        function switchWord($oldWord, $newWord) {
+            $oldWord.removeClass('is-visible').addClass('is-hidden');
+            $newWord.removeClass('is-hidden').addClass('is-visible');
+        }
+
+    });
+
+    //Smooth Scrolling
+$(function() {
+    $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) { var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+            if (target.length) {
+                $('html,body').animate({
+                    scrollTop: target.offset().top
+                }, 1000);
+                return false;
+            }
+        }
+    });
+});
+
+</script>
+
+<div ng-controller="MainController">
+
+    <a type="button" class="btn btn-default" aria-label="Left Align" ng-href="{{ nextSection }}" id="sectionButton">
+        <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+    </a>
+
+    <img src="" height="400px" style="visibility: hidden" class="main-section" data-title="Web Developer">
+    <div id="myNav" class="container-fluid no-bottom">
+
+        <div class="row heading" id="navInner" in-view="changeTitle('Web Developer')">
+
+            <section class="intro" style="padding-left: 34.7%">
+                <h2 class="headline rotate-1" id="headline">
+                    <strong>Blair Calderwood</strong>
+                    <span id="sectionName">{{ sectionName }}</span></h2>
+            </section>
+
+        </div>
+
+        <hr class="no-bottom">
+
+    </div>
+
+    <div class="container-fluid section-container info-row main-section" id="firstContainer"
+         data-title="Work and Education">
+
+        <section class="timeline" id="timeline">
+
+            <ul ng-controller="TimelineController">
+                <li class="row info-row" ng-repeat="education in timeline">
+                    <div>
+                        <p><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+                            {{education.establishment}}
+                        </p>
+                        <p><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> {{education.startDate}}
+                            -
+                            {{education.endDate}}</p>
+                        <p><span class="glyphicon glyphicon-education" aria-hidden="true"></span> {{education.degree}}
+                        </p>
+                        <p><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span>
+                            {{education.description}}
+                        </p>
+                    </div>
+                </li>
+            </ul>
+
+        </section>
+    </div>
+
+    <div class="row info-row main-section" data-title="Languages" id="languagesSection">
+        <canvas id="languagesChart" width="100%" height="33.3%"></canvas>
+    </div>
+
+    <div class="row info-row main-section" data-title="Technologies" id="technologiesSection">
+        <canvas id="technologiesChart" width="100%" height="40%"></canvas>
+    </div>
+
+    <div class="row main-section" data-title="Projects" id="projectsSection">
+
+        <div style="text-align: right">
+            <label for="searchInput">Search projects or technologies: </label>
+            <input id="searchInput" type="search">
+        </div>
+
+    </div>
+
+    <div ng-controller="ProjectsController">
+
+        <div class="row info-row">
+
+            <div class="col-md-2 col-xs-3 project-thumb hvr-grow-shadow" ng-repeat="project in projects">
+
+                <div class="thumbnail" ng-click="overlayShow = true">
+                    <a class="thumb">
+                        <img ng-src="{{project.imageURL}}" alt="{{project.name}}" height="100%" width="100%">
+                    </a>
+                </div>
+
+                <p><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span> {{project.name}}</p>
+                <p><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> {{project.company}}</p>
+
+                <p>
+                    <a class="anchor-tag" ng-repeat="tag in project.tags"><span
+                            class="label label-default">{{tag}}</span> </a>
+                </p>
+            </div>
+
+        </div>
+
+        <div class="overlay" ng-show="overlayShow">
+
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-3">
+                    <div class="col-md-4">
+                        Project Name
+                    </div>
+
+                    <div class="col-md-4">
+                        Project Description
+                    </div>
+
+                    <div class="col-md-4">
+                        Project Team Size
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
 </div>
 
 <!-- In production use:
