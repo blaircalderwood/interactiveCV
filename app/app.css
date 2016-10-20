@@ -41,8 +41,6 @@ body {
     position: fixed;
     bottom: 5%;
     left: 5%;
-    height: 3vw;
-    width: 3vw;
 
 }
 
@@ -69,13 +67,12 @@ body {
 }
 
 #firstContainer {
-    margin-top: 25%;
+    margin-top: 60vh;
     /*background-color: mintcream;*/
 }
 
 #sectionName {
 
-    width: 40%;
     color: rgba(255, 255, 255, 0.8);
 
 }
@@ -312,7 +309,7 @@ hr {
 
 /* Animated heading */
 
-.headline.rotate-1 .words-wrapper {
+#headline {
 
     display: inline-block;
     perspective: 300px;
@@ -323,7 +320,7 @@ hr {
     font-family: 'Monda', Sans-Serif;
 }
 
-.headline.rotate-1 b {
+#sectionName {
 
     opacity: 0;
     transform-origin: 50% 100%;
@@ -335,18 +332,18 @@ hr {
 
 }
 
-.headline.rotate-1 b.is-visible {
+#sectionName.isvisible {
 
     position: relative;
     opacity: 1;
     transform: rotateX(0deg);
-    animation: rotate-1-in 1.2s;
+    animation: rotate-1-in 0.6s;
 }
 
-.headline.rotate-1 b.is-hidden {
+#sectionName.ishidden {
 
     transform: rotateX(180deg);
-    animation: rotate-1-out 1.2s;
+    animation: rotate-1-out 0.6s;
 
 }
 

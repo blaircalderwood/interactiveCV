@@ -11,7 +11,7 @@ var portfolioApp = angular.module('myApp', [
 ]).config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
     $locationProvider.hashPrefix('!');
 
-    //$routeProvider.otherwise({redirectTo: '/view1'});
+    $routeProvider.otherwise({redirectTo: '/view1'});
 }]);
 
 portfolioApp.controller('ProjectsController', function ProjectsController($scope) {
@@ -237,6 +237,10 @@ window.addEventListener("scroll", callbackFunc);
 portfolioApp.controller('MainController', function ProjectsController($scope) {
 
     var mainNav = angular.element('#myNav');
+    var sectionNameEl = angular.element('sectionName');
+
+    $scope.sectionClass = [];
+    $scope.sectionClass.push('isvisible');
 
     //Affix navbar when scrolling past
     mainNav.affix({
@@ -258,11 +262,13 @@ portfolioApp.controller('MainController', function ProjectsController($scope) {
         var onScreen = $scope.sectionName;
         var nextSectionName = $scope.nextSection;
         var nextSection = false;
+        var sectionChange = false;
 
         items.each(function () {
-            if ($(this).isOnScreen()) {
+            if ($(this).isOnScreen() && onScreen !== this.dataset.title) {
                 onScreen = this.dataset.title;
                 nextSection = true;
+                sectionChange = true;
             }
             else {
                 if (nextSection) {
@@ -272,9 +278,25 @@ portfolioApp.controller('MainController', function ProjectsController($scope) {
             }
         });
 
-        $scope.sectionName = onScreen;
-        $scope.nextSection = nextSectionName;
-        $scope.$apply();
+        if (sectionChange) {
+
+            $scope.sectionClass = [];
+            $scope.sectionClass.push('ishidden');
+
+            $scope.$apply();
+
+            $scope.sectionName = onScreen;
+            $scope.nextSection = nextSectionName;
+
+            //setTimeout(function () {
+                $scope.sectionClass = [];
+                //$scope.sectionClass.splice($scope.sectionClass.indexOf('ishidden'));
+                $scope.sectionClass.push('isvisible');
+                $scope.$apply();
+
+            //}, 600);
+
+        }
 
     }
 

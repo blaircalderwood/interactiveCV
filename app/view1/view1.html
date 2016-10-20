@@ -22,9 +22,6 @@
         function hideWord($word) {
             var nextWord = takeNext($word);
             switchWord($word, nextWord);
-            setTimeout(function () {
-                hideWord(nextWord)
-            }, animationDelay);
         }
 
         function takeNext($word) {
@@ -39,19 +36,20 @@
     });
 
     //Smooth Scrolling
-$(function() {
-    $('a[href*=#]:not([href=#])').click(function() {
-        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) { var target = $(this.hash);
-            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-            if (target.length) {
-                $('html,body').animate({
-                    scrollTop: target.offset().top
-                }, 1000);
-                return false;
+    $(function () {
+        $('a[href*=#]:not([href=#])').click(function () {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                    $('html,body').animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                    return false;
+                }
             }
-        }
+        });
     });
-});
 
 </script>
 
@@ -64,13 +62,19 @@ $(function() {
     <img src="" height="400px" style="visibility: hidden" class="main-section" data-title="Web Developer">
     <div id="myNav" class="container-fluid no-bottom">
 
-        <div class="row heading" id="navInner" in-view="changeTitle('Web Developer')">
+        <div class="row heading" id="navInner">
 
-            <section class="intro" style="padding-left: 34.7%">
-                <h2 class="headline rotate-1" id="headline">
-                    <strong>Blair Calderwood</strong>
-                    <span id="sectionName">{{ sectionName }}</span></h2>
-            </section>
+            <div class="col-md-4"></div>
+
+            <div class="col-md-6">
+
+                <section class="intro headline">
+                    <h2 class="rotate-1" id="headline">
+                        <strong>Blair Calderwood</strong>
+                        <span id="sectionName" ng-class="sectionClass">{{ sectionName }}</span></h2>
+                </section>
+
+            </div>
 
         </div>
 
@@ -84,6 +88,7 @@ $(function() {
         <section class="timeline" id="timeline">
 
             <ul ng-controller="TimelineController">
+
                 <li class="row info-row" ng-repeat="education in timeline">
                     <div>
                         <p><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
@@ -99,6 +104,7 @@ $(function() {
                         </p>
                     </div>
                 </li>
+
             </ul>
 
         </section>
