@@ -1,4 +1,5 @@
 require(['https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.js'], function (Chart) {
+
     var ctx = [document.getElementById("languagesChart").getContext("2d"),
         document.getElementById("technologiesChart").getContext("2d")];
 
