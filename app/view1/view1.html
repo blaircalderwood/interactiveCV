@@ -74,9 +74,10 @@
 
         <div class="row info-row">
 
-            <div class="col-md-2 col-xs-3 project-thumb hvr-grow-shadow" ng-repeat="project in projects">
+            <div class="col-md-2 col-xs-3 project-thumb hvr-grow-shadow" ng-repeat="project in projects"
+                 ng-click="showOverlay()">
 
-                <div class="thumbnail" ng-click="overlayShow = true">
+                <div class="thumbnail">
                     <a class="thumb">
                         <img ng-src="{{project.imageURL}}" alt="{{project.name}}" height="100%" width="100%">
                     </a>
@@ -94,26 +95,27 @@
 
         </div>
 
-        <div class="overlay" ng-show="overlayShow">
+        <div id="overlay" ng-show="overlayShow" ng-click="hideOverlay($event)" ng-init="overlayShow=false">
 
             <div class="container-fluid headline" id="overlayContainer">
 
-                <i class="fa fa-times fa-2x" aria-hidden="true" id="overlayCross"></i>
+                <a ng-click="hideOverlay($event)"><i class="fa fa-times fa-2x" aria-hidden="true" id="overlayCross"></i></a>
 
-                <div class="row">
+                <div class="row" ng-init="overlayProject={}">
 
                     <div class="col-md-8">
                         <h3>
-                            <b class="overlay-title">Name </b><span class="overlay-content">Parking Space Finder</span>
+                            <b class="overlay-title">Name </b><span
+                                class="overlay-content">{{ overlayProject.name}}</span>
                         </h3>
                     </div>
 
                     <div class="col-md-4">
                         <h3>
-                            <b class="overlay-title">Team Size </b><span
-                                class="overlay-content"><i class="fa fa-user overlay-content" aria-hidden="true"></i>
-                                <i class="fa fa-user overlay-content" aria-hidden="true"></i>
-                            </span>
+                            <b class="overlay-title">Team Size </b><span class="overlay-content">
+                            <i class="fa fa-user overlay-content" aria-hidden="true"
+                               ng-repeat="member in getNumber(overlayProject.teamSize)"></i>
+                                </span>
                         </h3>
                     </div>
                 </div>

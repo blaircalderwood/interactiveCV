@@ -17,8 +17,6 @@ var portfolioApp = angular.module('myApp', [
 
 portfolioApp.controller('ProjectsController', function ProjectsController($scope) {
 
-    $scope.overlayShow = true;
-
     $scope.projects = [
         {
             name: 'Parking Space Finder',
@@ -178,6 +176,26 @@ portfolioApp.controller('ProjectsController', function ProjectsController($scope
          }*/
     ];
 
+
+    $scope.hideOverlay = function (e) {
+
+        if (e.target.id == "overlay" || e.target.id == "overlayCross") {
+            console.log(e.target.id);
+
+            $scope.overlayShow = false;
+
+        }
+    };
+
+    $scope.showOverlay = function () {
+        $scope.overlayShow = true;
+        $scope.overlayProject = this.project;
+    };
+
+    $scope.getNumber = function(num) {
+    return new Array(num);
+}
+
 });
 
 portfolioApp.controller('TimelineController', function ProjectsController($scope) {
@@ -289,13 +307,10 @@ portfolioApp.controller('MainController', function ProjectsController($scope) {
             $scope.sectionName = onScreen;
             $scope.nextSection = nextSectionName;
 
-            //setTimeout(function () {
-                $scope.sectionClass = [];
-                //$scope.sectionClass.splice($scope.sectionClass.indexOf('ishidden'));
-                $scope.sectionClass.push('isvisible');
-                $scope.$apply();
-
-            //}, 600);
+            $scope.sectionClass = [];
+            //$scope.sectionClass.splice($scope.sectionClass.indexOf('ishidden'));
+            $scope.sectionClass.push('isvisible');
+            $scope.$apply();
 
         }
 
