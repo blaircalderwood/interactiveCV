@@ -15,16 +15,19 @@ var portfolioApp = angular.module('myApp', [
     $routeProvider.otherwise({redirectTo: '/view1'});
 }]);
 
-portfolioApp.controller('ProjectsController', function ProjectsController($scope) {
+portfolioApp.controller('ProjectsController', function ProjectsController($scope, $sce) {
 
     $scope.projects = [
         {
             name: 'Parking Space Finder',
             company: 'University of Glasgow',
-            description: 'Parking Space Finder',
-            startDate: '',
-            endDate: '',
-            link: 'www.youtube.com/watch?v=j0bbQysxf7Q',
+            description: 'An app that allows the user to select a nearby car park and view a map of all available ' +
+            'parking spaces. A sonar based distance sensor was placed in each parking space and connected to an Arduino' +
+            ' board. This determined whether a car was parked in the space and updated the user\'s car park map ' +
+            'appropriately. ',
+            startDate: 'October 2015',
+            endDate: 'December 2015',
+            link: 'https://www.youtube.com/embed/j0bbQysxf7Q',
             imageURL: 'images/projects/parkingSpaceFinder.png',
             teamSize: 2,
             topFive: true,
@@ -36,7 +39,7 @@ portfolioApp.controller('ProjectsController', function ProjectsController($scope
             description: 'CORE Conference Website',
             startDate: '',
             endDate: '',
-            link: 'www.offshore-renewables.co.uk/',
+            link: 'https://www.offshore-renewables.co.uk/',
             imageURL: 'images/projects/CORE.jpg',
             teamSize: 1,
             topFive: true,
@@ -48,7 +51,7 @@ portfolioApp.controller('ProjectsController', function ProjectsController($scope
             description: 'BioMaAp Conference Website',
             startDate: '',
             endDate: '',
-            link: 'www.bio-materials.co.uk/',
+            link: 'https://www.bio-materials.co.uk/',
             imageURL: 'images/projects/biomat.png',
             teamSize: 1,
             topFive: false,
@@ -57,9 +60,11 @@ portfolioApp.controller('ProjectsController', function ProjectsController($scope
         {
             name: 'Excurj Travel Website',
             company: 'University of Glasgow',
-            description: 'Excurj Travel Website',
-            startDate: '',
-            endDate: '',
+            description: 'Myself and three team members created a travel website for a university project. Users can ' +
+            'visit the website to find people who live in the cities they are visiting. This way they can be shown ' +
+            'around the city by people who really know it.',
+            startDate: 'February 2016',
+            endDate: 'April 2016',
             link: 'http://excurj.pythonanywhere.com/',
             imageURL: 'images/projects/excurj.png',
             teamSize: 4,
@@ -70,9 +75,9 @@ portfolioApp.controller('ProjectsController', function ProjectsController($scope
             name: 'NUPP Conference Website',
             company: 'ASRANet Ltd',
             description: 'NUPP Conference Website',
-            startDate: '',
-            endDate: '',
-            link: 'nupp.nuclearpowerplantconference.com/',
+            startDate: 'January 2016',
+            endDate: 'February 2016',
+            link: 'https://nupp.nuclearpowerplantconference.com/',
             imageURL: 'images/projects/NUPP.jpg',
             teamSize: 1,
             topFive: false,
@@ -84,7 +89,7 @@ portfolioApp.controller('ProjectsController', function ProjectsController($scope
             description: 'Turnip Wars Game',
             startDate: '',
             endDate: '',
-            link: 'www.youtube.com/watch?v=rTdJZn8rM5o',
+            link: 'https://www.youtube.com/embed/rTdJZn8rM5o',
             imageURL: 'images/projects/turnipWars.png',
             teamSize: 1,
             topFive: true,
@@ -96,7 +101,7 @@ portfolioApp.controller('ProjectsController', function ProjectsController($scope
             description: 'CONFAB Conference Website',
             startDate: '',
             endDate: '',
-            link: 'www.fireandblast.co.uk/',
+            link: 'https://www.fireandblast.co.uk/',
             imageURL: 'images/projects/confab.jpg',
             teamSize: 1,
             topFive: false,
@@ -105,10 +110,15 @@ portfolioApp.controller('ProjectsController', function ProjectsController($scope
         {
             name: 'Pressure Input Project',
             company: 'University of Glasgow',
-            description: 'Pressure Input Research Project',
-            startDate: '',
-            endDate: '',
-            link: 'youtu.be/aA_zj2pinus',
+            description: 'A novel input method involving the use of pressure pads was developed to attempt to increase ' +
+            'the mobile typing speed of the average user. This input method works in conjunction with a standard mobile ' +
+            'keyboard. The user will switch between keyboard views (lowercase, uppercase and numbers/symbols) by ' +
+            'applying a small amount of pressure to the side of the phone. Tests show that this method is a viable ' +
+            'alternative to the standard input method for controlling keyboard views as performance between the two ' +
+            'input methods is relatively similar.',
+            startDate: 'October 2015',
+            endDate: 'December 2015',
+            link: 'https://www.youtube.com/embed/aA_zj2pinus',
             imageURL: 'images/projects/pressureProject.png',
             teamSize: 4,
             topFive: true,
@@ -120,7 +130,7 @@ portfolioApp.controller('ProjectsController', function ProjectsController($scope
             description: 'DISS Conference Website',
             startDate: '',
             endDate: '',
-            link: 'www.ship-dismantling.co.uk/',
+            link: 'https://www.ship-dismantling.co.uk/',
             imageURL: 'images/projects/DISS.png',
             teamSize: 1,
             topFive: false,
@@ -132,7 +142,7 @@ portfolioApp.controller('ProjectsController', function ProjectsController($scope
             description: 'AdWind Conference Website',
             startDate: '',
             endDate: '',
-            link: 'www.adwind2017.com/',
+            link: 'https://www.adwind2017.com/',
             imageURL: 'images/projects/adwind.jpg',
             teamSize: 1,
             topFive: false,
@@ -192,9 +202,13 @@ portfolioApp.controller('ProjectsController', function ProjectsController($scope
         $scope.overlayProject = this.project;
     };
 
-    $scope.getNumber = function(num) {
-    return new Array(num);
-}
+    $scope.getNumber = function (num) {
+        return new Array(num);
+    };
+
+    $scope.toSrc = function (src) {
+        return $sce.trustAsResourceUrl(src);
+    };
 
 });
 

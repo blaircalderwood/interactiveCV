@@ -58,19 +58,9 @@ body {
 
     position: fixed;
     top: 2.5vh;
-    left: 27.5vw;
-    width: 45vw;
     height: 95vh;
     background-color: white;
     color: black;
-
-}
-
-#overlayCross{
-
-     position: fixed;
-    top: 3.5vh;
-    right: 27.5vw;
 
 }
 
@@ -90,6 +80,10 @@ body {
 #myNav.affix {
     top: 0;
     position: fixed;
+}
+
+.right-float{
+    float: right;
 }
 
 #firstContainer {

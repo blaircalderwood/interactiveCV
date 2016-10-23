@@ -97,13 +97,14 @@
 
         <div id="overlay" ng-show="overlayShow" ng-click="hideOverlay($event)" ng-init="overlayShow=false">
 
-            <div class="container-fluid headline" id="overlayContainer">
+            <div class="container-fluid headline col-md-6 col-md-offset-3" id="overlayContainer">
 
-                <a ng-click="hideOverlay($event)"><i class="fa fa-times fa-2x" aria-hidden="true" id="overlayCross"></i></a>
+                <a ng-click="hideOverlay($event)" class="right-float"><i class="fa fa-times fa-2x" aria-hidden="true"
+                                                             id="overlayCross"></i></a>
 
                 <div class="row" ng-init="overlayProject={}">
 
-                    <div class="col-md-8">
+                    <div class="col-md-7">
                         <h3>
                             <b class="overlay-title">Name </b><span
                                 class="overlay-content">{{ overlayProject.name}}</span>
@@ -114,38 +115,47 @@
                         <h3>
                             <b class="overlay-title">Team Size </b><span class="overlay-content">
                             <i class="fa fa-user overlay-content" aria-hidden="true"
-                               ng-repeat="member in getNumber(overlayProject.teamSize)"></i>
+                               ng-repeat="member in getNumber(overlayProject.teamSize) track by $index"></i>
                                 </span>
                         </h3>
                     </div>
+
+                    <div class="col-md-12">
+                        <h3>
+                            <b class="overlay-title">Establishment </b><span
+                                class="overlay-content">{{ overlayProject.company}}</span>
+                        </h3>
+                    </div>
+
+                    <div class="col-md-12">
+                        <h3>
+                            <b class="overlay-title">Date </b>
+                            <span class="overlay-content">{{ overlayProject.startDate }} - {{ overlayProject.endDate }}</span>
+                        </h3>
+                    </div>
+
                 </div>
 
                 <div class="row" style="padding-top: 5vh">
 
-                    <p style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-                        vehicula pretium risus non
-                        sagittis. Mauris placerat sem id orci luctus, ac elementum turpis accumsan. Donec tristique,
-                        nisi ut semper cursus, quam mi semper sem, eget suscipit nulla sem et ex. Nam porttitor
-                        fringilla arcu in vestibulum. Interdum et malesuada fames ac ante ipsum primis in faucibus.
-                        Integer interdum sed dui a rutrum. Etiam placerat et urna at pharetra. Etiam placerat ornare
-                        dui, sed commodo ligula vehicula non. Curabitur lacinia egestas tempus. Curabitur pellentesque
-                        velit sed odio porta, eu lacinia ipsum ullamcorper. Sed et molestie libero, non lobortis enim.
-                        Mauris fermentum odio lorem, nec placerat arcu auctor eleifend. Donec at ipsum metus. Ut in
-                        turpis sed sem posuere molestie sed in arcu. Fusce faucibus arcu nulla, ac ultrices urna
-                        ullamcorper quis.
-
-                        Ut non quam ipsum. Proin rhoncus a magna vel tincidunt. Nam porttitor euismod iaculis. Curabitur
-                        a est ut risus maximus efficitur. Sed fermentum laoreet est, dapibus mollis turpis lacinia id.
-                        Pellentesque luctus porta pharetra. Integer sollicitudin aliquam diam, vel vehicula justo
-                        aliquam et.</p>
+                    <p style="text-align: justify">{{ overlayProject.description }}</p>
                 </div>
 
                 <div class="row" style="padding-top: 5vh">
 
                     <div class="embed-responsive embed-responsive-16by9">
                         <iframe class="embed-responsive-item"
-                                src="https://www.youtube.com/embed/j0bbQysxf7Q"></iframe>
+                                data-ng-src="{{ toSrc(overlayProject.link) }}"></iframe>
                     </div>
+
+                </div>
+
+                <div class="row" style="padding-top: 5vh">
+
+                    <p><b>Skills used </b>
+                        <a class="anchor-tag" ng-repeat="tag in overlayProject.tags"><span
+                                class="label label-default">{{tag}}</span> </a>
+                    </p>
 
                 </div>
 
