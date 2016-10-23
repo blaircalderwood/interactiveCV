@@ -5,6 +5,7 @@ var portfolioApp = angular.module('myApp', [
     'ngAnimate',
     'ngRoute',
     'angular-inview',
+    'ui.bootstrap',
     'myApp.view1',
     'myApp.view2',
     'myApp.version'
@@ -16,7 +17,7 @@ var portfolioApp = angular.module('myApp', [
 
 portfolioApp.controller('ProjectsController', function ProjectsController($scope) {
 
-    $scope.overlayShow = false;
+    $scope.overlayShow = true;
 
     $scope.projects = [
         {
