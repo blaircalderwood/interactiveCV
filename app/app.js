@@ -87,11 +87,11 @@ portfolioApp.controller('ProjectsController', function ProjectsController($scope
             name: 'Turnip Wars Game',
             company: 'University West of Scotland',
             description: 'Turnip Wars Game',
-            startDate: '',
-            endDate: '',
+            startDate: 'September 2014',
+            endDate: 'December 2014',
             link: 'https://www.youtube.com/embed/rTdJZn8rM5o',
             imageURL: 'images/projects/turnipWars.png',
-            teamSize: 1,
+            teamSize: 2,
             topFive: true,
             tags: ['Phaser', 'HTML', 'Web Games', 'JavaScript', 'Google App Engine']
         },
@@ -152,38 +152,41 @@ portfolioApp.controller('ProjectsController', function ProjectsController($scope
             name: 'Masters Project',
             company: 'University of Glasgow',
             description: 'Masters Project',
+            startDate: 'June 2016',
+            endDate: 'September 2016',
+            link: '',
+            imageURL: 'images/projects/mastersProject.png',
+            teamSize: 1,
+            topFive: true,
+            tags: ['Python', 'Numpy', 'Scipy', 'Data Science', 'Research', 'Multimedia']
+        },
+        {
+            name: 'Portfolio Website',
+            company: 'Personal Project',
+            description: 'Portfolio Website',
+            startDate: 'October 2016',
+            endDate: '',
+            link: '',
+            imageURL: 'images/projects/portfolio.png',
+            teamSize: 1,
+            topFive: false,
+            tags: ['Angular', 'HTML', 'JavaScript', 'Bootstrap', 'CSS', 'chartJS']
+        },
+        {
+            name: 'Honours Project',
+            company: 'University West of Scotland',
+            description: 'A simple web-based game editor that allows users to create sprites and use them in a game. ' +
+            'Sprites can be manipulated, for example moved towards the mouse at a fixed speed, upon completion of specified ' +
+            'events e.g. a mouse move event. The game editor includes a physics engine and so collisions between sprites ' +
+            'are possible.',
             startDate: '',
             endDate: '',
             link: '',
-            imageURL: 'images/projects/mastersProject.png',
-            teamSize: 4,
-            topFive: true,
-            tags: ['Python', 'Numpy', 'Scipy', 'Data Science', 'Research', 'Multimedia']
-        }/*,
-         {
-         name: 'Honours Project',
-         company: 'University West of Scotland',
-         description: 'Honours Project',
-         startDate: '',
-         endDate: '',
-         link: '',
-         imageURL: 'images/projects/honoursProject.png',
-         teamSize: 4,
-         topFive: false,
-         tags: ['Game Development', 'HTML', 'JavaScript', 'jQuery', 'jQuery Mobile', 'Multimedia']
-         },
-         {
-         name: 'Portfolio Website',
-         company: 'Personal Project',
-         description: 'Portfolio Website',
-         startDate: '',
-         endDate: '',
-         link: '',
-         imageURL: 'images/projects/honoursProject.png',
-         teamSize: 4,
-         topFive: false,
-         tags: ['Angular', 'HTML', 'JavaScript', 'Bootstrap', 'CSS', 'chartJS]
-         }*/
+            imageURL: 'images/projects/uws.png',
+            teamSize: 1,
+            topFive: false,
+            tags: ['Game Development', 'HTML', 'JavaScript', 'jQuery', 'jQuery Mobile', 'Multimedia']
+        }
     ];
 
 
