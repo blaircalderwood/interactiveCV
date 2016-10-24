@@ -6,6 +6,7 @@ var portfolioApp = angular.module('myApp', [
     'ngRoute',
     'angular-inview',
     'ui.bootstrap',
+    'duScroll',
     'myApp.view1',
     'myApp.view2',
     'myApp.version'
@@ -196,6 +197,7 @@ portfolioApp.controller('ProjectsController', function ProjectsController($scope
             console.log(e.target.id);
 
             $scope.overlayShow = false;
+            $scope.overlayProject = {};
 
         }
     };
@@ -270,6 +272,26 @@ function callbackFunc() {
 window.addEventListener("load", callbackFunc);
 window.addEventListener("scroll", callbackFunc);
 
+portfolioApp.controller('ContactController', function ContactController($scope) {
+
+    $scope.sendEmail = function () {
+        emailjs.send("gmail", "contact_message", {
+            name: $scope.contactName, email: $scope.contactEmail,
+            message: $scope.contactMessage
+        });
+
+        $scope.contactName = '';
+        $scope.contactEmail = '';
+        $scope.contactMessage = 'Your message has been sent.';
+
+        setTimeout(function () {
+            $scope.contactMessage = '';
+            $scope.$apply();
+        }, 1000)
+    }
+
+});
+
 portfolioApp.controller('MainController', function ProjectsController($scope) {
 
     var mainNav = angular.element('#myNav');
@@ -301,6 +323,7 @@ portfolioApp.controller('MainController', function ProjectsController($scope) {
         var sectionChange = false;
 
         items.each(function () {
+
             if ($(this).isOnScreen() && onScreen !== this.dataset.title) {
                 onScreen = this.dataset.title;
                 nextSection = true;
@@ -316,6 +339,9 @@ portfolioApp.controller('MainController', function ProjectsController($scope) {
 
         if (sectionChange) {
 
+            // Don't remove in-view even if Projects is scrolled past as this will reset animation
+            if (onScreen == "Projects") angular.element('.project-thumb').addClass('in-view');
+
             $scope.sectionClass = [];
             $scope.sectionClass.push('ishidden');
 
@@ -325,8 +351,10 @@ portfolioApp.controller('MainController', function ProjectsController($scope) {
             $scope.nextSection = nextSectionName;
 
             $scope.sectionClass = [];
-            //$scope.sectionClass.splice($scope.sectionClass.indexOf('ishidden'));
             $scope.sectionClass.push('isvisible');
+
+            $scope.scrollShow = (onScreen !== "Contact Me");
+
             $scope.$apply();
 
         }

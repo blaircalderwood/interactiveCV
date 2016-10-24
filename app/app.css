@@ -54,7 +54,7 @@ body {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-#overlayContainer{
+#overlayContainer {
 
     position: fixed;
     top: 2.5vh;
@@ -64,7 +64,7 @@ body {
 
 }
 
-.overlay-content{
+.overlay-content {
 
     color: rgba(51, 51, 51, 0.8);
 
@@ -82,7 +82,7 @@ body {
     position: fixed;
 }
 
-.right-float{
+.right-float {
     float: right;
 }
 
@@ -131,7 +131,7 @@ body {
     text-align: justify;
 }
 
-.form-control{
+.form-control {
     margin-bottom: 2%;
 }
 
@@ -146,6 +146,7 @@ hr {
 }
 
 .project-thumb {
+
     background-color: rgba(0, 0, 0, 0.1);
     margin: 1%;
     padding-top: 1%;
@@ -158,37 +159,6 @@ hr {
 
 .anchor-tag:hover {
     text-decoration: none;
-}
-
-.project-thumb.ng-enter,
-.project-thumb.ng-leave,
-.project-thumb.ng-move {
-    transition: 0.5s linear all;
-}
-
-.project-thumb.ng-enter,
-.project-thumb.ng-move {
-    height: 0;
-    opacity: 0;
-    overflow: hidden;
-}
-
-.project-thumb.ng-enter.ng-enter-active,
-.project-thumb.ng-move.ng-move-active {
-    height: 120px;
-    opacity: 1;
-}
-
-.project-thumb.ng-leave {
-    opacity: 1;
-    overflow: hidden;
-}
-
-.project-thumb.ng-leave.ng-leave-active {
-    height: 0;
-    opacity: 0;
-    padding-bottom: 0;
-    padding-top: 0;
 }
 
 .view-container {
@@ -422,4 +392,6 @@ hr {
 
 }
 
-.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+.nav, .pagination, .carousel, .panel-title a {
+    cursor: pointer;
+}
