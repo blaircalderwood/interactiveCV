@@ -65,7 +65,7 @@
 
         <div style="text-align: right">
             <label for="searchInput">Search projects or technologies: </label>
-            <input id="searchInput" type="search">
+            <input id="searchInput" type="search" ng-model="query" class="black-text">
         </div>
 
     </div>
@@ -74,7 +74,7 @@
 
         <div class="row info-row">
 
-            <div class="col-md-2 col-xs-3 project-thumb hvr-grow-shadow" ng-repeat="project in projects"
+            <div class="col-md-2 col-xs-3 project-thumb hvr-grow-shadow" ng-repeat="project in projects | filter:query"
                  ng-click="showOverlay()">
 
                 <div class="thumbnail">
