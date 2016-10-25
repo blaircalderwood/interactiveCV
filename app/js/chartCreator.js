@@ -1,10 +1,11 @@
-require(['https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.js'], function (Chart) {
+function createChart(){
 
-        var chartsData = [
+    console.log(angular.element("#languagesChart"));
+    var chartsData = [
         {
             chart: '',
             section: 'Languages',
-            ctx: document.getElementById("languagesChart").getContext("2d"),
+            ctx: angular.element("#languagesChart")[0].getContext("2d"),
             labelNames: ["        JavaScript", "HTML", "CSS", "Python", "Java"],
             data: [10, 8, 8, 10, 5],
             colours: [
@@ -87,4 +88,4 @@ require(['https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.js'], func
 
     }
 
-});
+};

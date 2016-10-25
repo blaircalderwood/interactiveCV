@@ -62,110 +62,11 @@
         <canvas id="technologiesChart" width="100%" height="40vh"></canvas>
     </div>
 
-    <div class="row main-section" data-title="Projects" id="projectsSection">
-
-        <div style="text-align: right">
-            <label for="searchInput">Search projects or technologies: </label>
-            <input id="searchInput" type="search" ng-model="query" class="black-text">
-        </div>
-
+    <div class="view-container">
+        <div ng-view class="view-frame" ng-cloak></div>
     </div>
 
-    <div ng-controller="ProjectsController">
-
-        <div class="row info-row">
-
-            <div class="col-md-2 col-xs-4 project-thumb slide hvr-grow-shadow"
-                 ng-repeat="project in projects | filter:query"
-                 ng-click="showOverlay()">
-
-                <div class="thumbnail">
-                    <a class="thumb">
-                        <img ng-src="{{project.imageURL}}" alt="{{project.name}}" height="100%" width="100%">
-                    </a>
-                </div>
-
-                <p><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span> {{project.name}}</p>
-                <p><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> {{project.company}}
-                </p>
-
-                <p>
-                    <a class="anchor-tag" ng-repeat="tag in project.tags"><span
-                            class="label label-default">{{tag}}</span> </a>
-                </p>
-
-            </div>
-
-        </div>
-
-        <div id="overlay" ng-show="overlayShow" ng-click="hideOverlay($event)" ng-init="overlayShow=false">
-
-            <div class="container-fluid headline col-md-6 col-md-offset-3" id="overlayContainer">
-
-                <a ng-click="hideOverlay($event)" class="right-float"><i class="fa fa-times fa-2x" aria-hidden="true"
-                                                                         id="overlayCross"></i></a>
-
-                <div class="row" ng-init="overlayProject={}">
-
-                    <div class="col-md-7">
-                        <h3>
-                            <b class="overlay-title">Name </b><span
-                                class="overlay-content">{{ overlayProject.name}}</span>
-                        </h3>
-                    </div>
-
-                    <div class="col-md-4">
-                        <h3>
-                            <b class="overlay-title">Team Size </b><span class="overlay-content">
-                            <i class="fa fa-user overlay-content" aria-hidden="true"
-                               ng-repeat="member in getNumber(overlayProject.teamSize) track by $index"></i>
-                                </span>
-                        </h3>
-                    </div>
-
-                    <div class="col-md-12">
-                        <h3>
-                            <b class="overlay-title">Establishment </b><span
-                                class="overlay-content">{{ overlayProject.company}}</span>
-                        </h3>
-                    </div>
-
-                    <div class="col-md-12">
-                        <h3>
-                            <b class="overlay-title">Date </b>
-                            <span class="overlay-content">{{ overlayProject.startDate }} - {{ overlayProject.endDate }}</span>
-                        </h3>
-                    </div>
-
-                </div>
-
-                <div class="row" style="padding-top: 5vh">
-
-                    <p style="text-align: justify">{{ overlayProject.description }}</p>
-                </div>
-
-                <div class="row" style="padding-top: 5vh">
-
-                    <div class="embed-responsive embed-responsive-16by9" ng-show="overlayProject.link">
-                        <iframe class="embed-responsive-item"
-                                data-ng-src="{{ toSrc(overlayProject.link) }}"></iframe>
-                    </div>
-
-                </div>
-
-                <div class="row" style="padding-top: 5vh">
-
-                    <p><b>Skills used </b>
-                        <a class="anchor-tag" ng-repeat="tag in overlayProject.tags"><span
-                                class="label label-default">{{tag}}</span> </a>
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-    </div>
+    <projects></projects>
 
     <div class="row main-section" data-title="Contact Me" id="contactSection" style="padding-bottom: 15%"
          ng-controller="ContactController">

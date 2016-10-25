@@ -57,8 +57,8 @@ body {
 #overlayContainer {
 
     position: fixed;
-    top: 2.5vh;
-    height: 95vh;
+    top: 1vh;
+    height: 98vh;
     background-color: white;
     color: black;
 
@@ -140,11 +140,6 @@ hr {
     width: 100%;
 }
 
-.row {
-    margin-left: 10%;
-    margin-right: 10%;
-}
-
 .project-thumb {
 
     background-color: rgba(0, 0, 0, 0.1);
@@ -159,6 +154,35 @@ hr {
 
 .anchor-tag:hover {
     text-decoration: none;
+}
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#searchDiv {
+    text-align: center;
+}
+
+@media (min-width: 480px) {
+
+    .row {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    #searchDiv {
+        text-align: right;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .affix{
+        position: static;
+    }
 }
 
 .view-container {
