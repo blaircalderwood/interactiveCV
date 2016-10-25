@@ -1,6 +1,7 @@
-function createChart(){
+angular.module('charts').component('charts', {
+    templateUrl: '/charts/charts_template.html',
+    controller: [function ChartsController() {
 
-    console.log(angular.element("#languagesChart"));
     var chartsData = [
         {
             chart: '',
@@ -88,4 +89,4 @@ function createChart(){
 
     }
 
-};
+}]});

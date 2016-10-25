@@ -205,7 +205,6 @@ angular.module('projects').component('projects', {
 })
     .filter('trusted', ['$sce', function ($sce) {
         return function (url) {
-            console.log(url);
             return $sce.trustAsResourceUrl(url);
         };
     }]);

@@ -1,0 +1,20 @@
+<div class="row" style="padding-bottom: 15%">
+
+    <div class="col-md-6 col-md-offset-3 form-group">
+
+        <h4 class="headline">Interested in working together? Please leave me a message via the form below and I will
+            get back to you as soon as possible.</h4>
+        <br>
+
+        <input id="nameInput" class="form-control" placeholder="Name" ng-model="$ctrl.contactName">
+        <input id="emailInput" class="form-control" placeholder="Email" ng-model="$ctrl.contactEmail">
+        <textarea id="messageInput" class="form-control" placeholder="Message" rows="10"
+                  ng-model="$ctrl.contactMessage"></textarea>
+
+        <button type="submit" class="btn btn-danger btn-block" ng-click="$ctrl.sendEmail()">
+            <i class="fa fa-paper-plane-o fa-2x" aria-hidden="true"></i>
+        </button>
+
+    </div>
+
+</div>

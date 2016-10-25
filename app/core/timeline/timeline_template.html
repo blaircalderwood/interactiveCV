@@ -1,0 +1,21 @@
+<section class="timeline" id="timeline">
+
+    <ul>
+
+        <li class="row info-row" ng-repeat="education in $ctrl.timeline">
+            <div>
+                <p><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+                    {{education.establishment}}
+                </p>
+                <p><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> {{education.startDate}}
+                    -
+                    {{education.endDate}}</p>
+                <p><span class="glyphicon glyphicon-education" aria-hidden="true"></span> {{education.degree}}
+                </p>
+                <p><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span>
+                    {{education.description}}
+                </p>
+            </div>
+        </li>
+
+</section>
