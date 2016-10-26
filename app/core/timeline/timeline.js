@@ -20,10 +20,11 @@ angular.module('timeline').component('timeline', {
         {
             establishment: 'ASRANet Ltd',
             degree: 'Web Developer Intern',
-            description: 'I was a web developer for a company that hosts conferences and courses in engineering for ' +
+            /*description: 'I was a web developer for a company that hosts conferences and courses in engineering for ' +
             'academics and industry figures. As I was the only one in the company with an academic background in ' +
             'computing I was trusted to build several web apps myself. I utilised several technologies such as Django, ' +
-            'Python, HTML, CSS, JavaScript and LESS.',
+            'Python, HTML, CSS, JavaScript and LESS.',*/
+            description: 'Sole web developer for six marketing based websites',
             startDate: 'January 2016',
             endDate: 'July 2016'
         }

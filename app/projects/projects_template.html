@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="projects/projects.css">
+
 <div class="row">
 
     <div id="searchDiv">
@@ -9,7 +11,7 @@
 
 <div class="row info-row">
 
-    <div class="col-md-2 col-xs-6 col-xs-offset-3 project-thumb slide hvr-grow-shadow"
+    <div class="col-md-2 col-xs-6 project-thumb slide hvr-grow-shadow"
          ng-repeat="project in $ctrl.projects | filter:query"
          ng-click="$ctrl.showOverlay(project)">
 
@@ -37,7 +39,7 @@
     <div class="container-fluid headline col-md-6 col-md-offset-3" id="overlayContainer">
 
         <a ng-click="$ctrl.hideOverlay($event)" class="right-float"><i class="fa fa-times fa-2x" aria-hidden="true"
-                                                                 id="overlayCross"></i></a>
+                                                                       id="overlayCross"></i></a>
 
         <div class="row" ng-init="$ctrl.overlayProject={}">
 
@@ -64,7 +66,7 @@
                 </h3>
             </div>
 
-            <div class="col-md-12">
+            <div class="col-md-12 hidden-xs">
                 <h3>
                     <b class="overlay-title">Date </b>
                     <span class="overlay-content">{{ $ctrl.overlayProject.startDate }} - {{ $ctrl.overlayProject.endDate }}</span>
@@ -73,12 +75,12 @@
 
         </div>
 
-        <div class="row" style="padding-top: 5vh">
+        <div class="row overlay-row">
 
             <p style="text-align: justify">{{ $ctrl.overlayProject.description }}</p>
         </div>
 
-        <div class="row" style="padding-top: 5vh">
+        <div class="row overlay-row hidden-xs">
 
             <div class="embed-responsive embed-responsive-16by9">
                 <iframe class="embed-responsive-item"
@@ -87,7 +89,11 @@
 
         </div>
 
-        <div class="row" style="padding-top: 5vh">
+        <div class="row overlay-row visible-xs">
+            <p>For more information please <a ng-href="{{ $ctrl.overlayProject.link }}">click here</a>.</p>
+        </div>
+
+        <div class="row overlay-row">
 
             <p><b>Skills used </b>
                 <a class="anchor-tag" ng-repeat="tag in $ctrl.overlayProject.tags"><span
