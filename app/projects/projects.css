@@ -1,6 +1,6 @@
 @media (max-width: 480px) {
 
-    .project-thumb{
+    .project-thumb {
         margin: 0;
     }
 }
@@ -20,6 +20,15 @@
 
 #searchDiv {
     text-align: center;
+    padding-bottom: 2vh;
+}
+
+.project-item-text {
+    color: white;
+}
+
+.project-item {
+    background-color: rgba(70, 130, 180, 0.8);
 }
 
 .project-thumb {
@@ -58,7 +67,6 @@
 .overlay-row {
     padding-top: 5vh
 }
-
 
 .black-text {
     color: black;

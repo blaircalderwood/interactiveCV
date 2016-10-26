@@ -11,7 +11,7 @@
 
 <div class="row info-row">
 
-    <div class="col-md-2 col-xs-6 project-thumb slide hvr-grow-shadow"
+    <div class="col-md-2 hidden-xs project-thumb slide hvr-grow-shadow"
          ng-repeat="project in $ctrl.projects | filter:query"
          ng-click="$ctrl.showOverlay(project)">
 
@@ -31,6 +31,31 @@
         </p>
 
     </div>
+
+    <ul class="visible-xs list-group">
+
+        <li ng-repeat="project in $ctrl.projects | filter:query"
+            ng-click="$ctrl.showOverlay(project)" class="list-group-item project-item">
+
+            <div class="media">
+                <div class="media-left">
+                    <img ng-src="{{ project.imageURL }}" class="media-object" width="64" height="64">
+                </div>
+
+                <div class="media-body">
+                    <b class="project-item-text media-heading"><span class="glyphicon glyphicon-blackboard"
+                                                       aria-hidden="true"></span><span> {{ project.name }}</span></b>
+                    <p class="project-item-text"><span class="glyphicon glyphicon-map-marker"
+                                                       aria-hidden="true"></span><span> {{ project.company }}</span></p>
+                            <p><a class="anchor-tag" ng-repeat="tag in project.tags"><span
+                    class="label label-default">{{tag}}</span> </a></p>
+                </div>
+
+            </div>
+
+        </li>
+
+    </ul>
 
 </div>
 

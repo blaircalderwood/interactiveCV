@@ -20,7 +20,6 @@ var portfolioApp = angular.module('myApp', [
 portfolioApp.controller('MainController', function ProjectsController($scope) {
 
     var mainNav = angular.element('#myNav');
-    var sectionNameEl = angular.element('sectionName');
 
     $scope.sectionClass = [];
     $scope.sectionClass.push('isvisible');
@@ -42,49 +41,36 @@ portfolioApp.controller('MainController', function ProjectsController($scope) {
 
     function changeSection() {
 
-        var onScreen = $scope.sectionName;
-        var nextSectionName = $scope.nextSection;
-        var nextSection = false;
-        var sectionChange = false;
+        var newSectionName = $scope.sectionName;
 
         items.each(function () {
 
-            if ($(this).isOnScreen() && onScreen !== this.dataset.title) {
-                onScreen = this.dataset.title;
-                nextSection = true;
-                sectionChange = true;
-            }
-            else {
-                if (nextSection) {
-                    nextSection = false;
-                    nextSectionName = "#" + this.id;
-                }
-            }
+            if ($(this).isOnScreen()) newSectionName = this.dataset.title;
+
         });
 
-        if (sectionChange) {
-
-            // Don't remove in-view even if Projects is scrolled past as this will reset animation
-            if (onScreen == "Projects") angular.element('.project-thumb').addClass('in-view');
+        if ($scope.sectionName !== newSectionName) {
 
             $scope.sectionClass = [];
             $scope.sectionClass.push('ishidden');
 
             $scope.$apply();
 
-            $scope.sectionName = onScreen;
-            $scope.nextSection = nextSectionName;
+            $scope.sectionName = newSectionName;
+            $scope.nextSection = newSectionName;
 
             $scope.sectionClass = [];
             $scope.sectionClass.push('isvisible');
 
-            $scope.scrollShow = (onScreen !== "Contact Me");
+            $scope.scrollShow = (newSectionName !== "Contact Me");
 
             $scope.$apply();
 
         }
 
     }
+
+});
 
 // From http://stackoverflow.com/questions/37674113/how-to-track-if-element-is-visible-on-screen-with-same-class-when-scrolling-with
     $.fn.isOnScreen = function () {
@@ -102,8 +88,6 @@ portfolioApp.controller('MainController', function ProjectsController($scope) {
         bounds.bottom = bounds.top + this.outerHeight();
         return (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom));
     };
-
-});
 
 function createCharts() {
 
