@@ -56,7 +56,7 @@
         <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
     </a>
 
-    <div id="myNav" class="container-fluid no-bottom main-section" data-title="Web Developer" >
+    <div id="myNav" class="container-fluid no-bottom main-section" data-title="Web Developer">
 
         <div class="row" id="navInner">
 
@@ -79,13 +79,18 @@
     <timeline class="container-fluid section-container info-row main-section" data-title="Work and Education"
               id="timelineSection"></timeline>
 
+    <div ng-controller="ChartsController">
 
-    <div class="row info-row main-section" data-title="Languages" id="languagesSection">
-        <canvas id="languagesChart" width="100%" height="40vh"></canvas>
-    </div>
+        <div ng-repeat="chart in charts">
 
-    <div class="row info-row main-section" data-title="Technologies" id="technologiesSection">
-        <canvas id="technologiesChart" width="100%" height="40vh"></canvas>
+            <div class="row info-row main-section" data-title="{{ chart.title }}" id="{{ chart.id }}">
+                <canvas class="chart-horizontal-bar"
+                        chart-data="chart.data" chart-labels="chart.labels" chart-options="chartOptions">
+                </canvas>
+            </div>
+
+        </div>
+
     </div>
 
     <projects class="main-section" data-title="Projects" id="projectsSection"></projects>
@@ -96,12 +101,12 @@
 
 <footer id="pageFooter">
 
-        <a href="https://uk.linkedin.com/in/blaircalderwood" class="contact-icon">
+    <a href="https://uk.linkedin.com/in/blaircalderwood" class="contact-icon">
                     <span class="fa-stack fa-2x">
   <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
   <i class="fa fa-linkedin-square fa-stack-1x"></i>
 </span>
-        </a>
+    </a>
 
 </footer>
 
@@ -113,7 +118,9 @@
 <script src="bower_components/angular-inview/angular-inview.js"></script>
 <script src="bower_components/ui-bootstrap-tpls-2.2.0.min.js"></script>
 <script src="bower_components/angular-scroll/angular-scroll.min.js"></script>
-<script src="bower_components/chart.js/dist/Chart.bundle.min.js"></script>
+
+<script src="bower_components/chart.js/dist/Chart.min.js"></script>
+<script src="bower_components/angular-chart.js/dist/angular-chart.min.js"></script>
 
 <script src="app.js"></script>
 
