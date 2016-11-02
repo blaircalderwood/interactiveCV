@@ -15,6 +15,7 @@
     "angular-inview": "^2.1.0",
     "jquery": "^3.1.1",
     "bootstrap": "^3.3.7",
-    "ngSmoothScroll": "^2.0.0"
+    "ngSmoothScroll": "^2.0.0",
+    "angular-chart.js": "^1.0.3"
   }
 }
